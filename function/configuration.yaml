@@ -1,0 +1,9 @@
+project:
+ synthesize: True
+ name: Kunal's_Test
+ location: C:\Users\kmehan3\Popegen\Test
+ inputs:
+  entities: [Hhld, person, gq]
+  housing_entities: [Hhld]
+  person_entities: [person]
+  groupquarter_entities: [gq]
