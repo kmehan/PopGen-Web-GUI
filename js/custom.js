@@ -65,11 +65,31 @@ function removeTab() {
 	$(brid).remove();	
 	tabcounter = tabcounter -1;
 };
-$('#plabel').submit(function() {
-  var post_data = $('#plabel').serialize();
-  $.post('function/plabel.php', post_data, function(data) {
-    $('#notification').show();
-	
-  });
-  window.open('http://localhost/popgen/function/configuration.yaml');
+//$('#plabel').submit(function() {
+//  var plabel_data = $('#plabel').serialize();
+//  $.post('function/plabel.php', plabel_data, function(data) {
+//    window.open('http://localhost/popgen/function/configuration.yaml');	
+//  });
+  
+//});
+  $('#uploader').submit(function submitForm() {
+            
+            var fd = new FormData(document.getElementById("uploader"));
+            fd.append("label", "WEBUPLOAD");
+            $.ajax({
+              url: "function/fileproc.php",
+              type: "POST",
+              data: fd,
+              processData: false,  // tell jQuery not to process the data
+              contentType: false   // tell jQuery not to set contentType
+            }).done(function( data ) {				
+				var optionsarray = JSON.parse(data);
+				var seloption = "";
+				$.each(optionsarray,function(i){
+				seloption += '<option value="'+optionsarray[i]+'">'+optionsarray[i]+'</option>'; 
+				});
+				$('#hhldvars').append(seloption);
+            });
+            return false;
+		
 });

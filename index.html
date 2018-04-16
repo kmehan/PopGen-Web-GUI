@@ -168,11 +168,10 @@
                 <span class="placeholder">Project Folder Location
                 </span>
               </div>
-			  <input type="submit"></input>
-			  </form>
-			  <p style="display: none;" id="notification">Write Complete</p>
+			  </form>			  
             </div>
             <div class="flex-grid">
+			<form id="uploader" method="post" enctype="multipart/form-data">
               <div class="row">
                 <div class="cell size3">
                   <h4>a. Select Sample Files
@@ -184,7 +183,7 @@
                   <p>Select Household Sample File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -195,7 +194,7 @@
                   <p>Select Person Sample File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -206,7 +205,7 @@
                   <p>Select Groupquarter Sample File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -225,7 +224,7 @@
                   <p>Select Household Marginal File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -236,7 +235,7 @@
                   <p>Select Person Marginal File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -247,7 +246,7 @@
                   <p>Select Groupquarter Marginal File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -267,7 +266,7 @@
                   <p>Select Household Marginal File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -278,7 +277,7 @@
                   <p>Select Person Marginal File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -289,7 +288,7 @@
                   <p>Select Groupquarter Marginal File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -308,7 +307,7 @@
                   <p>Select {{ aggregate }}-{{ disaggregate }} Mapping File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -319,7 +318,7 @@
                   <p>Select {{ sampleu }}-{{ aggregate }} Mapping File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -330,7 +329,7 @@
                   <p>Select {{ sampleu }}-{{ disaggregate }} Mapping File
                   </p>
                   <div class="input-control file" data-role="input">
-                    <input type="file" accept=".csv,.txt,.dat">
+                    <input name="multifile[]" type="file" accept=".csv,.txt,.dat">
                     <button class="button">
                       <span class="mif-folder">
                       </span>
@@ -338,6 +337,13 @@
                   </div>
                 </div>
               </div>
+			  <div class="row">
+				<div class="cell size12" style="text-align:center">
+					<p>Click to Update Variable List</p>
+					<input type="submit" value="Update">
+				</div>
+			  </div>
+			  </form>
               <div class="row">
                 <div class="cell size5">
                   <h4>e. Select Variable Associations
@@ -349,13 +355,8 @@
                   <p>Select Household ID Variable
                   </p>
                   <div class="input-control select">
-                    <select>
-                      <option>1
-                      </option>
-                      <option>2
-                      </option>
-                      <option>3
-                      </option>
+                    <select id="hhldvars">
+                      
                     </select>
                   </div>
                 </div>
@@ -364,12 +365,7 @@
                   </p>
                   <div class="input-control select">
                     <select>
-                      <option>1
-                      </option>
-                      <option>2
-                      </option>
-                      <option>3
-                      </option>
+                      
                     </select>
                   </div>
                 </div>
@@ -378,12 +374,7 @@
                   </p>
                   <div class="input-control select">
                     <select>
-                      <option>1
-                      </option>
-                      <option>2
-                      </option>
-                      <option>3
-                      </option>
+                      
                     </select>
                   </div>
                 </div>
@@ -394,12 +385,7 @@
                   </p>
                   <div class="input-control select">
                     <select>
-                      <option>1
-                      </option>
-                      <option>2
-                      </option>
-                      <option>3
-                      </option>
+                      
                     </select>
                   </div>
                 </div>
@@ -408,12 +394,7 @@
                   </p>
                   <div class="input-control select">
                     <select>
-                      <option>1
-                      </option>
-                      <option>2
-                      </option>
-                      <option>3
-                      </option>
+                      
                     </select>
                   </div>
                 </div>
@@ -1031,6 +1012,6 @@
       </div>
     </div>
   </body>
-  <script src="js/custom.js">
+  <script type="text/javascript" src="js/custom.js">
   </script>
 </html>
