@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PopGen 2.0 Configuration Generator</title>
+    <link href="css/metro.css" rel="stylesheet">
+	<link href="css/metro-icons.min.css" rel="stylesheet">
+	<link href="css/metro-responsive.min.css" rel="stylesheet">
+	<link href="css/metro-rtl.min.css" rel="stylesheet">
+	<link href="css/metro-schemes.min.css" rel="stylesheet">
+    <script src="scripts/jquery.js"></script>
+    <script src="js/metro.min.js"></script>	
+	<script src="js/angular.min.js"></script>	
+	<link href="css/metro-icons.css" rel="stylesheet">
+</head>
+<body>
+    <div class="flex-grid" style="width:80%;margin: 0 auto" ng-app="">	
+        <h1 class="text-light">PopGen 2.0</h1>		
+		
+		
+				<div class="app-bar darcula" data-role="appbar">
+					<a class="app-bar-element" href="">PopGen</a>
+					<span class="app-bar-divider"></span>
+					<ul class="app-bar-menu">
+						<li><a href="">Download</a></li>
+						<li><a href="">Documentation</a></li>
+						<li><a href="">Help</a></li>						
+					</ul>
+				</div>
+				<br>
+				<div class="row flex-just-sb">
+					<div class="cell colspan3" style="background-color:#60a917; margin-right: 10px">
+						<ul class="sidebar green">
+							<li class="active"><a href=""><span class="mif-home">&nbspProject</span></a></li>
+							<li><a href=""><span class="mif-keyboard">&nbspControls</span></a></li>
+							<li><a href=""><span class="mif-meter">&nbspPerformance</span></a></li>	
+							<li><a href=""><span class="mif-magic-wand">&nbspSynthesis</span></a></li>
+                            <li><a href=""><span class="mif-cogs">&nbspParameters</span></a></li>	
+                            <li><a href=""><span class="mif-checkmark">&nbspFinish</span></a></li>						
+						</ul>
+						<hr>
+					</div>
+					
+					<div class="cell colspan9">
+						<div class="wizard" data-role="wizard">
+							<div class="steps">
+								<div class="step">	
+									<div style="text-align:center">									
+										<div class="input-control modern text">
+											<input type="text">
+											<span class="label">Project Name</span>
+											<span class="informer">e.g., PopGen_Project</span>
+											<span class="placeholder">Project Name</span>
+										</div>
+
+										<div class="input-control modern text">
+											<input type="text">
+											<span class="label">Household Entity Name</span>
+											<span class="informer">e.g., hhld</span>
+											<span class="placeholder">Household Entity Name</span>
+										</div>										
+										<div class="input-control modern text">
+											<input type="text">
+											<span class="label">Person Entity Name</span>
+											<span class="informer">e.g., person</span>
+											<span class="placeholder">Person Entity Name</span>
+										</div>
+										<br>
+										<div class="input-control modern text">
+											<input type="text">
+											<span class="label">Groupquarter Entity Name</span>
+											<span class="informer">e.g., gq</span>
+											<span class="placeholder">Groupquarter Entity Name</span>
+										</div>										
+										<div class="input-control modern text">
+											<input type="text" ng-model="aggregate" ng-init="aggregate='Region'">
+											<span class="label">Aggregate Spatial Unit Name</span>
+											<span class="informer">e.g., County</span>
+											<span class="placeholder">Aggregate Spatial Unit..</span>
+										</div>
+										<div class="input-control modern text">
+											<input type="text" ng-model="disaggregate" ng-init="disaggregate='Geo'">
+											<span class="label">Disaggregate Spatial Unit Name</span>
+											<span class="informer">e.g., TAZ</span>
+											<span class="placeholder">Disaggregate Spatial Unit</span>
+										</div>
+										<br>
+										<div class="input-control modern text">
+											<input type="text" ng-model="sampleu" ng-init="sampleu='Sample'">
+											<span class="label">Sample Spatial Unit Name</span>
+											<span class="informer">e.g., PUMA</span>
+											<span class="placeholder">Sample Spatial Unit Name</span>
+										</div>											
+										<div class="input-control modern text">
+											<input type="text">
+											<span class="label">Project Folder Location</span>
+											<span class="informer">e.g., C:\Users\jdoe\PopGen</span>
+											<span class="placeholder">Project Folder Location</span>
+										</div>										
+									</div>	
+									<div class="flex-grid">
+										<div class="row">
+											<div class="cell size3">
+											<h4>a. Pick Sample Files</h4>
+										</div>
+										</div>
+										<div class="row cells3">
+											<div class="cell size4">
+												<p>Pick Household Sample File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>
+											<div class="cell size4">
+											<p>Pick Person Sample File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>
+											<div class="cell size4">
+											<p>Pick Groupquarter Sample File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>											
+										</div>
+										<div class="row">
+											<div class="cell size5">
+											<h4>b. Pick {{ aggregate }}-Marginal Files</h4>											
+										</div>
+										</div>
+										<div class="row cells3">
+											<div class="cell size4">
+												<p>Pick Household Marginal File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>
+											<div class="cell size4">
+											<p>Pick Person Marginal File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>
+											<div class="cell size4">
+											<p>Pick Groupquarter Marginal File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>											
+										</div>
+										<!-- Replace 'Geo' with Disaggregate Spatial and Region with 'Aggregate' spatial -->
+										<div class="row">
+											<div class="cell size5">
+											<h4>c. Pick {{ disaggregate }}-Marginal Files</h4>
+										</div>
+										</div>
+										<div class="row cells3">
+											<div class="cell size4">
+												<p>Pick Household Marginal File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>
+											<div class="cell size4">
+											<p>Pick Person Marginal File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>
+											<div class="cell size4">
+											<p>Pick Groupquarter Marginal File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>											
+										</div>
+										<div class="row">
+											<div class="cell size5">
+											<h4>d. Pick Mapping Files</h4>
+										</div>
+										</div>
+										<div class="row cells3">
+											<div class="cell size4">
+												<p>Pick {{ aggregate }}-{{ disaggregate }} Mapping File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>
+											<div class="cell size4">
+											<p>Pick {{ sampleu }}-{{ aggregate }} Mapping File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>
+											<div class="cell size4">
+											<p>Pick {{ sampleu }}-{{ disaggregate }} Mapping File</p>
+												<div class="input-control file" data-role="input">
+													<input type="file" accept=".csv,.txt,.dat">
+													<button class="button"><span class="mif-folder"></span></button>
+												</div>
+											</div>											
+										</div>
+										<div class="row">
+											<div class="cell size5">
+											<h4>e. Select Variable Associations</h4>
+										</div>
+										</div>									
+										<div class="row cells2">											
+											<div class="cell size6">	
+												<p>Select Household ID Variable</p>
+												<div class="input-control select">
+													<select>
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+													</select>
+												</div>
+											</div>	
+											<div class="cell size6">
+												<p>Select Person ID Variable</p>
+												<div class="input-control select">
+													<select>
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+													</select>
+												</div>
+											</div>			
+										</div>
+										<div class="row cells2">											
+											<div class="cell size6">	
+												<p>Select {{ aggregate }} Variable</p>
+												<div class="input-control select">
+													<select>
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+													</select>
+												</div>
+											</div>	
+											<div class="cell size6">
+												<p>Select {{ disaggregate }} Variable</p>
+												<div class="input-control select">
+													<select>
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="row">											
+											<div class="cell size12">	
+												<p>Select Sample {{ disaggregate }} Variable</p>
+												<div class="input-control select">
+													<select>
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+													</select>
+												</div>
+											</div>													
+										</div>
+									</div>
+								</div>
+								<div class="step">Page 2
+								</div>
+								<div class="step">Page 3
+								</div>
+								<div class="step">Page 3
+								</div>
+								<div class="step">Page 3
+								</div>
+								<div class="step">Page 3
+								</div>
+							</div>
+						</div>											
+					</div>
+				</div>
+			
+    </div>    
+</body>
+</html>
